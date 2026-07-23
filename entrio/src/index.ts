@@ -27,8 +27,9 @@ app.get('/api/auth/me', requireAdmin, (req, res) => {
 });
 
 // Serve React build
-const reactBuild = path.join(__dirname, '../../entrio-react/build');
+const reactBuild = path.join(__dirname, '..', '..', 'entrio-react', 'build');
 app.use(express.static(reactBuild));
+console.log('Serving React build from:', reactBuild);
 
 // All non-API routes → React index.html (client-side routing)
 app.get('/{*path}', (_req, res) => {
